@@ -11386,3 +11386,7 @@ strong {
   color: #fff;
 }
 
+.form-delete {
+  display: inline;
+}
+
