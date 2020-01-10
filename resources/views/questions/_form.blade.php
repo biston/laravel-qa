@@ -24,5 +24,5 @@
   </div>
 
   <div class="form-group">
-     <input type="submit" value="Ask this question" class="btn btn-outline-primary">
+     <input type="submit" value="{{ $action }}" class="btn btn-outline-primary">
   </div>

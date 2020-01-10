@@ -29,7 +29,11 @@
                             </div>
                         </div>
                          <div class="media-body ml-4">
-                            <h3><a href="{{ $question->url }}">{{$question->title}}</a></h3>
+                             <div class="d-flex justify-content-between">
+                                <h4><a href="{{ $question->url }}">{{$question->title}}</a></h4>
+                                 <a href="{{ route('questions.edit', $question) }}" class="btn btn-outline-info">Edit</a>
+                             </div>
+
                              <p class="lead">
                                  <span>Ask by </span><a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
                                  <small class="text-muted">{{ $question->created_date}}</small>

@@ -6,14 +6,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3>Ask a question</h3>
+                    <h3>Update the question</h3>
                     <a class="btn btn-outline-secondary" href="{{ route('questions.index')}}">Back to all questions</a>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('questions.store') }}" method="post">
+                    <form action="{{ route('questions.update',$question) }}" method="post">
                         @csrf
-                        @include('questions._form',['action'=>'Ask a question'])
+                        @method('put')
+                        @include('questions._form',['action'=>'Update question'])
                     </form>
                 </div>
 
