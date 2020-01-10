@@ -11356,3 +11356,33 @@ a.text-dark:focus {
   }
 }
 
+.counters {
+  font-size: 14px;
+  text-align: center;
+}
+
+strong {
+  display: block;
+  font-size: 1.5em;
+}
+
+.answer,
+.vote {
+  width: 60px;
+  height: 55px;
+}
+
+.status.unanswered {
+  border: none;
+}
+
+.status.answered {
+  border: 1px solid #38c172;
+  color: #38c172;
+}
+
+.status.answer-accepted {
+  background-color: #38c172;
+  color: #fff;
+}
+

@@ -9,8 +9,8 @@ $factory->define(Question::class, function (Faker $faker) {
     return [
         'title'=>$faker->sentence(rand(4,5)),
         'body'=>$faker->paragraphs(rand(3,7),true),
-        'views_count'=>rand(0,20),
-        'answers_count'=>rand(0,100),
-        'votes_count'=>rand(-100,100)
+        'views_count'=>rand(0,5),
+        'answers_count'=>rand(0,3),
+        'votes_count'=>rand(-3,3)
     ];
 });
