@@ -15,7 +15,14 @@
                    <div>
                         <div class="mt-2 d-flex flex-column">
                             <span class="text-muted"> Asked {{ $question->created_date }}</span>
-                            <a href="{{ $question->user->url}} ">By  {{ $question->user->name  }}</a>
+                            <div class="media mt-2">
+                            <div class="media-left mr-2">
+                                <img src="{{ $question->user->profile->avatar }}" class="media-object rounded-circle" width='40' height="40">
+                            </div>
+                            <div class="media-body mt-2">
+                                    By <a href="{{ $question->user->url }}">  {{ $question->user->name}}</a>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -37,7 +44,15 @@
                             <div class="d-flex justify-content-end">
                                 <div class="mt-2 d-flex flex-column">
                                     <span class="text-muted"> Answered {{ $answer->created_date }}</span>
-                                    <a href="{{ $answer->user->url }}">By {{ $answer->user->name}}</a>
+                                    <div class="media mt-2">
+                                        <div class="media-left mr-2">
+                                            <img src="{{ $answer->user->profile->avatar }}" class="media-object rounded-circle" width='40' height="40">
+                                        </div>
+                                        <div class="media-body mt-2">
+                                                By  <a href="{{ $answer->user->url }}">  {{ $answer->user->name}}</a>
+                                        </div>
+                                     </div>
+
                                 </div>
                             </div>
                         </div>

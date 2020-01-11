@@ -7,7 +7,9 @@
             <div class="card ">
                 <div class="card-header bg-light d-flex justify-content-between align-items-center">
                     <h3>{{ $user->name }}</h3>
-                    <a class="btn btn-outline-secondary" href="{{ route('users.edit',$user)}}">Edit user informations</a>
+                    @can('update', $user->profile)
+                       <a class="btn btn-outline-secondary" href="{{ route('users.edit',$user)}}">Edit user informations</a>
+                    @endcan
                 </div>
 
                 <div class="card-body">
