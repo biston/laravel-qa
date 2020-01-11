@@ -23,6 +23,11 @@ class DatabaseSeeder extends Seeder
                                );
                     });
 
+       })->each(function($user){
+           $user->profile()
+                ->save(
+                     factory(App\Profile::class)->make()
+                );
        });
     }
 }

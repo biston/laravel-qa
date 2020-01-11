@@ -11390,3 +11390,7 @@ strong {
   display: inline;
 }
 
+.profile-header {
+  height: 40px;
+}
+
