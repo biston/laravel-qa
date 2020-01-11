@@ -32,12 +32,17 @@
                              <div class="d-flex justify-content-between">
                                 <h4><a href="{{ $question->url }}">{{$question->title}}</a></h4>
                                 <div>
-                                    <a href="{{ route('questions.edit', $question) }}" class="btn btn-outline-info">Edit</a>
-                                     <form class="form-delete" action="{{ route('questions.destroy', $question) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <input type="submit" value="Delete" class="btn btn-outline-danger">
-                                    </form>
+                                    @can('update', $question)
+                                        <a href="{{ route('questions.edit', $question) }}" class="btn btn-outline-info">Edit</a>
+                                    @endcan
+                                    @can('delete', $question)
+
+                                        <form class="form-delete" action="{{ route('questions.destroy', $question) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                                       </form>
+                                    @endcan
                                 </div>
                              </div>
 
