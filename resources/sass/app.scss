@@ -4,9 +4,14 @@
 // Variables
 @import 'variables';
 
+$fa-font-path: "./webfonts";
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid";
 .counters{
   font-size: 14px;
   text-align: center;
@@ -44,4 +49,23 @@ strong{
 
 .profile-header{
   height: 40px;
+}
+
+a{
+  text-decoration: none !important;
+}
+.votes-controls{
+
+  a,span{
+    color: $gray-700;
+  }
+}
+
+span{
+  &.votes-count{
+    font-size: 25px;
+  }
+  &.favorites-count{
+    font-size: 12px;
+  }
 }

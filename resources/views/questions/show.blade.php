@@ -11,18 +11,43 @@
                 </div>
 
                 <div class="card-body">
-                   {!! nl2br(e($question->body),false) !!}
-                   <div>
+
+                    <div class="media mt-2">
+                        <div class="media-left mr-4">
+                            <div class="d-flex flex-column votes-controls">
+
+                                <a title="Vote up" href="#" class="votes-up">
+                                    <i class="fas fa-caret-up fa-3x"></i>
+                                </a>
+                                <span class="votes-count">123</span>
+                                <a title="Vote down" href="#" class="votes-down p-0 m-0">
+                                    <i class="fas fa-caret-down fa-3x p-0 m-0"></i>
+                                </a>
+                                <a title="Mark as favorite" href="#" class="favorite d-flex flex-column">
+                                        <i class="fas fa-star fa-2x mb-2"></i>
+                                        <span class="favorites-count text-muted">123</span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="media-body">
+                                {!! nl2br(e($question->body),false) !!}
+                        </div>
+                    </div>
+
+
+                    <div>
                         <div class="mt-2 d-flex flex-column">
                             <span class="text-muted"> Asked {{ $question->created_date }}</span>
+
                             <div class="media mt-2">
-                            <div class="media-left mr-2">
-                                <img src="{{ $question->user->profile->avatar }}" class="media-object rounded-circle" width='40' height="40">
+                                <div class="media-left mr-2">
+                                    <img src="{{ $question->user->profile->avatar }}" class="media-object rounded-circle" width='40' height="40">
+                                </div>
+                                <div class="media-body mt-2">
+                                     <a href="{{ $question->user->url }}">  {{ $question->user->name}}</a>
+                                </div>
                             </div>
-                            <div class="media-body mt-2">
-                                    By <a href="{{ $question->user->url }}">  {{ $question->user->name}}</a>
-                            </div>
-                          </div>
                         </div>
                     </div>
                 </div>
@@ -39,8 +64,30 @@
                 </div>
                 <div class="card-body">
                     @foreach ($question->answers as $answer)
+                       <div class="media mt-2">
+                            <div class="media-left mr-4">
+                                <div class="d-flex flex-column votes-controls">
+
+                                    <a title="Vote up" href="#" class="votes-up">
+                                        <i class="fas fa-caret-up fa-3x"></i>
+                                    </a>
+                                    <span class="votes-count">123</span>
+                                    <a title="Vote down" href="#" class="votes-down p-0 m-0">
+                                        <i class="fas fa-caret-down fa-3x p-0 m-0"></i>
+                                    </a>
+                                    <a title="Accept answer" href="#" class="favorite d-flex flex-column">
+                                            <i class="fas fa-check fa-2x mb-2"></i>
+                                            <span class="favorites-count text-muted">123</span>
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                    {!! nl2br(e($answer->body),false) !!}
+                            </div>
+                        </div>
+
                         <div>
-                            {!! nl2br(e($answer->body),false) !!}
                             <div class="d-flex justify-content-end">
                                 <div class="mt-2 d-flex flex-column">
                                     <span class="text-muted"> Answered {{ $answer->created_date }}</span>
@@ -49,7 +96,7 @@
                                             <img src="{{ $answer->user->profile->avatar }}" class="media-object rounded-circle" width='40' height="40">
                                         </div>
                                         <div class="media-body mt-2">
-                                                By  <a href="{{ $answer->user->url }}">  {{ $answer->user->name}}</a>
+                                                 <a href="{{ $answer->user->url }}">  {{ $answer->user->name}}</a>
                                         </div>
                                      </div>
 

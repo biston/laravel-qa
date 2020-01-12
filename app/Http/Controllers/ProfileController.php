@@ -49,6 +49,8 @@ class ProfileController extends Controller
     {
         $this->authorize('update',$user->profile);
 
+         $data=$request->only(['about','city','phone_number','address','about']);
+
         if($request->has('avatar')){
             /* Si ce n'est pas une image par defaut */
            if(! strpos($user->profile->avatar,'avatar')){
@@ -57,9 +59,11 @@ class ProfileController extends Controller
            }
 
            $avatar=$request->avatar->store('default','public');
+
+           $data=array_merge($data,array('avatar'=>asset('storage').'/'.$avatar));
         }
 
-        $user->profile()->update(array_merge($request->only(['about','city','phone_number','address','about']),array('avatar'=>asset('storage').'/'.$avatar)));
+        $user->profile()->update($data);
         return redirect()->route('users.show',compact('user'))->with('success','Your profile has been updated successfully !');
     }
 
