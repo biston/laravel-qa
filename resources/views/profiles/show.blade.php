@@ -13,6 +13,7 @@
                 </div>
 
                 <div class="card-body">
+                  @include('layouts._message')
                   <div class="d-flex justify-content-center">
                     <img src="{{ $user->profile->avatar }}" alt="" class="rounded-circle" width="110" height="110">
 

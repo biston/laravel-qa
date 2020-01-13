@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -33,9 +35,15 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Question $question,Request $request)
     {
-        //
+
+
+        $question->answers()->create($request->validate(['body'=>'required'])+['user_id'=>Auth::id()]);
+
+        return back()->with('success','Your question has been submitted with success !');
+
+
     }
 
     /**

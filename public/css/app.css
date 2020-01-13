@@ -15664,3 +15664,26 @@ span.favorites-count {
   font-size: 12px;
 }
 
+a {
+  cursor: pointer;
+  color: #6c757d;
+}
+
+a.off,
+a.off:hover {
+  color: #dee2e6;
+}
+
+a.author {
+  color: #3490dc;
+}
+
+a.favorite.favorited,
+a.favorite.favorited:hover {
+  color: #ffed4a;
+}
+
+a.vote-accepted {
+  color: #38c172;
+}
+

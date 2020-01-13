@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('questions', 'QuestionController');
 Route::resource('users', 'ProfileController')->only(['show','edit','update']);
+Route::resource('questions.answers', 'AnswerController');

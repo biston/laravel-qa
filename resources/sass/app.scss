@@ -69,3 +69,27 @@ span{
     font-size: 12px;
   }
 }
+
+a{
+  cursor:pointer;
+  color: $gray-600;
+
+  &.off,&.off:hover{
+    color:$gray-300;
+  }
+
+ &.author{
+   color: $blue;
+ }
+
+ &.favorite{
+   &.favorited,&.favorited:hover{
+     color :$warning;
+   }
+ }
+
+  &.vote-accepted{
+    color:$green;
+  }
+
+}
