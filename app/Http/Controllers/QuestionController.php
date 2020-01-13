@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Question;
 use Illuminate\Http\Request;
 use App\Http\Requests\AskQuestionRequest;
@@ -109,5 +110,16 @@ class QuestionController extends Controller
         $question->delete();
 
         return redirect()->route('questions.index')->with('success','Your question has been deleted successfully');
+    }
+
+
+    public function accept_answer(Answer $answer){
+
+        $this->authorize('accept',$answer);
+
+        $answer->question->best_answer_id=$answer->id;
+        $answer->push();
+
+        return back();
     }
 }

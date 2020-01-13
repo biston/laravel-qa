@@ -19,10 +19,23 @@
                                 <a title="Vote down" href="#" class="votes-down off">
                                     <i class="fas fa-caret-down fa-3x"></i>
                                 </a>
-                                <a title="Mark this answer as best answer" href="#" class="vote-accepted d-flex flex-column">
-                                    <i class="fas fa-check fa-2x mb-2"></i>
+                                @can('accept', $answer)
+                                <a title="Mark this answer as best answer" onClick="event.preventDefault();document.getElementById('accept-form-{{$answer->id}}').submit()" class="{{ $answer->status }} d-flex flex-column">
+                                        <i class="fas fa-check fa-2x mb-2"></i>
                                 </a>
+                                @else
+                                    @if ($answer->is_best_answer)
+                                    <a title="Marked as best answer"  class="{{ $answer->status }} d-flex flex-column">
+                                            <i class="fas fa-check fa-2x mb-2"></i>
+                                     </a>
+                                    @endif
 
+                                @endcan
+
+
+                            <form id="accept-form-{{ $answer->id }}" action="{{ route('questions.accept-answer', ['answer'=>$answer]) }}" method="post" style="display: none">
+                                @csrf
+                                </form>
                             </div>
                         </div>
                         <div class="media-body">
