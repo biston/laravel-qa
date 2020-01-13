@@ -47,6 +47,9 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class);
     }
+    public function favorites(){
+        return $this->belongsToMany(Question::class,'favorites')->withTimestamps();
+    }
 
     public function getUrlAttribute(){
         return  route('users.show', $this);

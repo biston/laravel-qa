@@ -22,3 +22,5 @@ Route::resource('questions', 'QuestionController');
 Route::resource('users', 'ProfileController')->only(['show','edit','update']);
 Route::resource('questions.answers', 'AnswerController');
 Route::post('/questions/{answer}/accept' , 'QuestionController@accept_answer')->name('questions.accept-answer');
+Route::post('/questions/{question}/favorite' , 'FavoriteController@store')->name('questions.favorite');
+Route::delete('/questions/{question}/favorite' , 'FavoriteController@destroy');

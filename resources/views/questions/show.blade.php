@@ -23,10 +23,16 @@
                                 <a title="Vote down" href="#" class="votes-down off">
                                     <i class="fas fa-caret-down fa-3x"></i>
                                 </a>
-                                <a title="Mark as favorite" href="#" class="favorite favorited d-flex flex-column">
-                                        <i class="fas fa-star fa-2x mb-2 favorited"></i>
+                                <a title="Mark as favorite" onClick="event.preventDefault();document.getElementById('favorite-form-{{ $question->id }}').submit()" class="favorite {{ Auth::guest()?'off':($question->is_favorited ?'favorited':'')  }} d-flex flex-column">
+                                        <i class="fas fa-star fa-2x mb-2 "></i>
                                         <span class="favorites-count text-muted">123</span>
                                 </a>
+                                <form id="favorite-form-{{ $question->id }}" action="{{ route('questions.favorite',$question) }}" method="post" style="display: none">
+                                        @csrf
+                                        @if ($question->is_favorited)
+                                            @method('delete')
+                                        @endif
+                                </form>
 
                             </div>
                         </div>

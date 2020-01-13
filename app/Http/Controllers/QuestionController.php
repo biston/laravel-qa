@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AskQuestionRequest;
 
 class QuestionController extends Controller
@@ -14,10 +15,6 @@ class QuestionController extends Controller
     {
         $this->middleware('auth')->except(['index','show']);
     }
-
-
-
-
 
     /**
      * Display a listing of the resource.
@@ -122,4 +119,6 @@ class QuestionController extends Controller
 
         return back();
     }
+
+
 }
