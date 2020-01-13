@@ -33,14 +33,14 @@
                                 <h4><a href="{{ $question->url }}">{{$question->title}}</a></h4>
                                 <div>
                                     @can('update', $question)
-                                        <a href="{{ route('questions.edit', $question) }}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{ route('questions.edit', $question) }}" class="btn btn-outline-info mr-2"><i class="far fa-edit"></i></a>
                                     @endcan
                                     @can('delete', $question)
 
                                         <form class="form-delete" action="{{ route('questions.destroy', $question) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                                            <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
                                        </form>
                                     @endcan
                                 </div>

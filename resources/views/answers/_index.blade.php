@@ -31,7 +31,21 @@
                     </div>
 
                     <div>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-between">
+                          <div class="mt-4 bt-ml">
+                                @can('update', $answer)
+                                    <a href="{{ route('questions.answers.edit', ['question'=>$question,'answer'=>$answer]) }}" class="btn btn-outline-info mr-2"><i class="far fa-edit"></i></a>
+                                @endcan
+                                @can('delete', $answer)
+
+                                    <form class="form-delete" action="{{ route('questions.answers.destroy', ['question'=>$question,'answer'=>$answer]) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                @endcan
+                            </div>
+
                             <div class="mt-2 d-flex flex-column">
                                 <span class="text-muted"> Answered {{ $answer->created_date }}</span>
                                 <div class="media mt-2">
