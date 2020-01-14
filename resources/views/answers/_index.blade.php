@@ -10,15 +10,12 @@
                 @foreach ($answers as $answer)
                    <div class="media mt-2">
                         <div class="media-left mr-4">
-                            <div class="d-flex flex-column votes-controls">
+                            <div class="d-flex flex-column votes-controls text-center">
 
-                                <a title="Vote up" href="#" class="votes-up">
-                                    <i class="fas fa-caret-up fa-3x"></i>
-                                </a>
-                                <span class="votes-count">123</span>
-                                <a title="Vote down" href="#" class="votes-down off">
-                                    <i class="fas fa-caret-down fa-3x"></i>
-                                </a>
+                                @include('shared._vote',[
+                                    'model'=>$answer,
+                                ])
+
                                 @can('accept', $answer)
                                 <a title="Mark this answer as best answer" onClick="event.preventDefault();document.getElementById('accept-form-{{$answer->id}}').submit()" class="{{ $answer->status }} d-flex flex-column">
                                         <i class="fas fa-check fa-2x mb-2"></i>

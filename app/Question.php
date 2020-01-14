@@ -23,7 +23,7 @@ class Question extends Model
         return $this->favorites()->where('user_id',Auth::id())->count()>0;
     }
 
-    public function getFavoritesCount(){
+    public function getFavoritesCountAttribute(){
         return $this->favorites->count();
     }
 
@@ -33,6 +33,10 @@ class Question extends Model
 
     public function favorites(){
         return $this->belongsToMany(User::class,'favorites')->withTimestamps();
+    }
+
+    public function votes(){
+        return $this->morphToMany(User::class,'votable')->withTimestamps();
     }
 
     public function setTitleAttribute($value){
@@ -64,6 +68,12 @@ class Question extends Model
         return 'unanswered';
     }
 
+    public function getVotedUpAttribute(){
+        return auth()->user()->voteQuestions()->where('votable_id',$this->id)->where('vote',1)->exists();
+    }
 
+    public function getVotedDownAttribute(){
+        return auth()->user()->voteQuestions()->where('votable_id',$this->id)->where('vote',-1)->exists();
+    }
 
 }

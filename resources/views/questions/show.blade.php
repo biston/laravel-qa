@@ -14,18 +14,15 @@
 
                     <div class="media mt-2">
                         <div class="media-left mr-4">
-                            <div class="d-flex flex-column votes-controls">
+                            <div class="d-flex flex-column votes-controls text-center">
 
-                                <a title="Vote up" href="#" class="votes-up">
-                                    <i class="fas fa-caret-up fa-3x"></i>
-                                </a>
-                                <span class="votes-count">123</span>
-                                <a title="Vote down" href="#" class="votes-down off">
-                                    <i class="fas fa-caret-down fa-3x"></i>
-                                </a>
-                                <a title="Mark as favorite" onClick="event.preventDefault();document.getElementById('favorite-form-{{ $question->id }}').submit()" class="favorite {{ Auth::guest()?'off':($question->is_favorited ?'favorited':'')  }} d-flex flex-column">
+                                @include('shared._vote',[
+                                    'model'=>$question
+                                ])
+
+                                <a title="Mark as favorite" onClick="event.preventDefault();document.getElementById('favorite-form-{{ $question->id }}').submit()" class="favorite text-center {{ Auth::guest()?'off':($question->is_favorited ?'favorited':'')  }} d-flex flex-column">
                                         <i class="fas fa-star fa-2x mb-2 "></i>
-                                        <span class="favorites-count text-muted">123</span>
+                                        <span class="favorites-count text-muted">{{ $question->favorites_count }}</span>
                                 </a>
                                 <form id="favorite-form-{{ $question->id }}" action="{{ route('questions.favorite',$question) }}" method="post" style="display: none">
                                         @csrf

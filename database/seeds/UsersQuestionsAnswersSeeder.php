@@ -11,6 +11,11 @@ class UsersQuestionsAnswersSeeder extends Seeder
      */
     public function run()
     {
+
+        \DB::table('users')->delete();
+        \DB::table('questions')->delete();
+        \DB::table('answers')->delete();
+
         factory(App\User::class,3)->create()->each(function($user){
             $user->questions()
                  ->saveMany(

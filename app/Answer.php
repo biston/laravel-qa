@@ -18,6 +18,10 @@ class Answer extends Model
         return $this->belongsTo(Question::class);
     }
 
+    public function votes(){
+        return $this->morphToMany(User::class,'votable')->withTimestamps();
+    }
+
     public function getCreatedDateAttribute(){
         return $this->created_at->diffForHumans();
     }
@@ -28,6 +32,15 @@ class Answer extends Model
     public function getIsBestAnswerAttribute(){
         return $this->id===$this->question->best_answer_id;
     }
+
+    public function getVotedUpAttribute(){
+        return auth()->user()->voteAnswers()->where('votable_id',$this->id)->where('vote',1)->exists();
+    }
+
+    public function getVotedDownAttribute(){
+        return auth()->user()->voteAnswers()->where('votable_id',$this->id)->where('vote',-1)->exists();
+    }
+
     public static function boot() {
 
         parent::boot();
