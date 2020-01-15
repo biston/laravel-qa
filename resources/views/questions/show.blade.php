@@ -20,17 +20,6 @@
                                     'model'=>$question
                                 ])
 
-                                <a title="Mark as favorite" onClick="event.preventDefault();document.getElementById('favorite-form-{{ $question->id }}').submit()" class="favorite text-center {{ Auth::guest()?'off':($question->is_favorited ?'favorited':'')  }} d-flex flex-column">
-                                        <i class="fas fa-star fa-2x mb-2 "></i>
-                                        <span class="favorites-count text-muted">{{ $question->favorites_count }}</span>
-                                </a>
-                                <form id="favorite-form-{{ $question->id }}" action="{{ route('questions.favorite',$question) }}" method="post" style="display: none">
-                                        @csrf
-                                        @if ($question->is_favorited)
-                                            @method('delete')
-                                        @endif
-                                </form>
-
                             </div>
                         </div>
                         <div class="media-body">
@@ -38,21 +27,7 @@
                         </div>
                     </div>
 
-
-                    <div>
-                        <div class="mt-2 d-flex flex-column">
-                            <span class="text-muted"> Asked {{ $question->created_date }}</span>
-
-                            <div class="media mt-2">
-                                <div class="media-left mr-2">
-                                    <img src="{{ $question->user->profile->avatar }}" class="media-object rounded-circle" width='40' height="40">
-                                </div>
-                                <div class="media-body mt-2">
-                                     <a class="author" href="{{ $question->user->url }}">  {{ $question->user->name}}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   @include('shared._author',['model'=>$question])
                 </div>
 
             </div>

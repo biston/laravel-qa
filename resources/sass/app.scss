@@ -97,3 +97,11 @@ a{
 .bt-ml{
   margin-left:70px;
 }
+
+.item{
+  &:not(:last-child){
+    padding: 20px 0;
+    margin: 20px 10px;
+    border-bottom: solid 1px rgba($black,.1);
+  }
+}

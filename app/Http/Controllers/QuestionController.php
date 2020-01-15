@@ -62,7 +62,7 @@ class QuestionController extends Controller
     {
 
         $question->increment('views_count');
-        $question->load(['answers.user']);
+        $question->load(['user','answers.user']);
         return view('questions.show',compact('question'));
     }
 
